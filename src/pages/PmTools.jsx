@@ -8,8 +8,8 @@ const initialTasks = [
   { id: 'task-2', title: 'Build Navbar and Footer', status: 'done', startDate: '2026-08-03', endDate: '2026-08-05' },
   { id: 'task-3', title: 'Write Home, About, Skills content', status: 'done', startDate: '2026-08-06', endDate: '2026-08-10' },
   { id: 'task-4', title: 'Build Kanban board', status: 'done', startDate: '2026-08-11', endDate: '2026-08-13' },
-  { id: 'task-5', title: 'Build Gantt chart', status: 'in-progress', startDate: '2026-08-14', endDate: '2026-08-16' },
-  { id: 'task-6', title: 'Deploy to Vercel', status: 'todo', startDate: '2026-08-17', endDate: '2026-08-19' },
+  { id: 'task-5', title: 'Build Gantt chart', status: 'done', startDate: '2026-08-14', endDate: '2026-08-16' },
+  { id: 'task-6', title: 'Deploy to Vercel', status: 'done', startDate: '2026-08-17', endDate: '2026-08-19' },
 ]
 
 const columns = [
