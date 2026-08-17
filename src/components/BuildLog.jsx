@@ -30,9 +30,9 @@ const phases = [
   {
     phase: 'Phase 5',
     title: 'Visual system & launch',
-    status: 'In Progress',
-    description: 'Full dark-product redesign, then deployment.',
-    items: ['Dark product UI with lime accent', 'Trimmed nav: Home / Projects / Tools / Contact', 'Deploy to Vercel', 'QA pass on mobile'],
+    status: 'Done',
+    description: 'Rebuilt the site as a dark product UI with a lime accent, made layouts hold from phone to large displays, upgraded the Gantt into a real chart, then deployed and checked the live site on mobile.',
+    items: ['Dark product UI with lime accent', 'Trimmed nav: Home / Projects / Tools / Contact', 'Responsive pass across pages', 'Gantt: shared time axis, today line, click-to-edit dates', 'Resume live from the nav', 'Deployed to Vercel', 'QA pass on mobile'],
   },
 ]
 

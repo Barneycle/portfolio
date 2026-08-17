@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const projects = [
   {
     title: 'PM Tools — Kanban & Gantt',
-    status: 'In Progress',
+    status: 'Completed',
     description: 'A live, working set of project management tools built directly into this site: a drag-and-drop Kanban board and a Gantt chart, sharing the same task data and persisted in local storage.',
     tech: ['React', '@hello-pangea/dnd', 'Tailwind CSS'],
     github: 'https://github.com/Barneycle/portfolio',

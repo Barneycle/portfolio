@@ -160,8 +160,6 @@ function Home() {
           <span className="font-mono text-[10px] text-lime-400 sm:text-xs">OPEN TO REMOTE WORK</span>
         </div>
 
-        <p className="mb-3 max-w-full break-all text-center font-mono text-[11px] text-zinc-500 sm:mb-4 sm:text-sm">~/portfolio $ whoami</p>
-
         <h1 className="font-display mb-3 text-center text-[clamp(2rem,8vw,6rem)] leading-tight font-bold tracking-tight text-balance">
           Alec Campana
         </h1>
