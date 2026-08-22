@@ -57,7 +57,7 @@ function BuildLog() {
           <ul className="flex flex-col gap-1.5">
             {p.items.map((item) => (
               <li key={item} className="flex gap-2 text-sm text-zinc-500">
-                <span className="shrink-0 text-lime-400/50">—</span>
+                <span className="shrink-0 text-lime-400/50">-</span>
                 <span className="min-w-0">{item}</span>
               </li>
             ))}

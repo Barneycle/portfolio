@@ -1,0 +1,14 @@
+---
+description: Never use em dashes in any copy or code comments
+alwaysApply: true
+---
+
+# No em dashes
+
+Never use an em dash (—) anywhere in this project: UI copy, titles, meta tags, comments, or commit messages.
+
+Use a comma, period, colon, or hyphen instead.
+- Wrong: `I ship software on my own — scoping features`
+- Right: `I ship software on my own, scoping features`
+- Wrong: `Alec Campana — Frontend`
+- Right: `Alec Campana: Frontend`

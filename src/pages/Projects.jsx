@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const projects = [
   {
-    title: 'PM Tools — Kanban & Gantt',
+    title: 'PM Tools: Kanban & Gantt',
     status: 'Completed',
     description: 'A live, working set of project management tools built directly into this site: a drag-and-drop Kanban board and a Gantt chart, sharing the same task data and persisted in local storage.',
     tech: ['React', '@hello-pangea/dnd', 'Tailwind CSS'],
@@ -12,7 +12,7 @@ const projects = [
   {
     title: 'GanApp',
     status: 'In Progress',
-    description: 'A cross-platform event management system built solo, covering event creation, scheduling, and attendee coordination.',
+    description: 'A cross-platform event management app scoped and built solo: defined the project scope, prioritized features, and worked through the full build, adapting the approach when technical roadblocks came up.',
     tech: ['React', 'React Native', 'Supabase', 'Tailwind / NativeWind'],
     github: 'https://github.com/Barneycle/GanApp',
   },
@@ -25,9 +25,9 @@ const projects = [
     live: 'https://hci2-project-evaluation.vercel.app/',
   },
   {
-    title: 'Inventory Ticketing System',
+    title: 'Inventory and Support/Ticketing System',
     status: 'Prototype',
-    description: 'A prototype inventory and ticketing tool started during my internship at Aretex. Development was paused before completion, but the core structure and logic are in place.',
+    description: 'An independent prototype designed to replace Jira inventory and ticketing in an enterprise setting, inspired by gaps observed during the Aretex internship. Inventory management was scoped first, with ticketing planned as a follow-on module.',
     tech: ['React', 'Node.js'],
     github: 'https://github.com/Barneycle/InventoryTicketingSystem',
   },

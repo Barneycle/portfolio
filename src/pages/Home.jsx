@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import ContactForm from '../components/ContactForm'
 
 const roles = ['Frontend Developer', 'Mobile Developer', 'Aspiring Project Manager']
 const techStack = ['React', 'React Native', 'Vite', 'Tailwind CSS', 'Node.js', 'Supabase', 'PostgreSQL', 'MongoDB', 'Git', 'Jira', 'JumpCloud', 'Google Workspace']
@@ -52,42 +53,6 @@ const stats = [
   { value: "Dean's Lister", label: 'BSIT, Partido State University' },
   { value: 'VP', label: 'Peer Facilitator Group, 2022–23' },
   { value: 'Remote', label: 'Open to either track' },
-]
-
-const contacts = [
-  {
-    label: 'Email',
-    value: 'campanaalec@gmail.com',
-    href: 'mailto:campanaalec@gmail.com',
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect width="20" height="16" x="2" y="4" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-      </svg>
-    ),
-  },
-  {
-    label: 'LinkedIn',
-    value: 'alec-campana',
-    href: 'https://linkedin.com/in/alec-campana-501b80321',
-    external: true,
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.114 20.452H3.558V9h3.556v11.452z" />
-      </svg>
-    ),
-  },
-  {
-    label: 'GitHub',
-    value: 'Barneycle',
-    href: 'https://github.com/Barneycle',
-    external: true,
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.113.793-.26.793-.577v-2.017c-3.338.726-4.033-1.61-4.033-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.763-1.605-2.665-.303-5.467-1.333-5.467-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .32.192.694.801.576C20.565 21.797 24 17.298 24 12c0-6.63-5.37-12-12-12z" />
-      </svg>
-    ),
-  },
 ]
 
 function SkillBar({ level }) {
@@ -170,10 +135,9 @@ function Home() {
         </p>
 
         <p className="mb-8 max-w-xl text-center text-[clamp(0.9rem,2vw,1.25rem)] text-zinc-400 sm:mb-10">
-          I coordinate IT work and ship software on my own — scoping features,
-          tracking timelines, and changing the plan when the first approach
-          hits a wall. Currently open to remote roles in development or
-          project coordination.
+          I coordinate IT work and ship software on my own, scoping features,
+          tracking timelines, and keeping priorities visible. Currently open
+          to remote roles in development or project coordination.
         </p>
 
         <div className="mb-12 flex w-full max-w-md flex-col gap-3 sm:mb-16 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
@@ -213,7 +177,7 @@ function Home() {
                 I'm a BSIT graduate and Dean's Lister from Partido State
                 University in Goa, Camarines Sur. I build frontend and mobile
                 apps, and I care as much about scoping, tracking, and
-                coordinating the work as I do about the code — the same
+                coordinating the work as I do about the code. That is the same
                 discipline I used to plan and deliver projects on my own,
                 without a team or close supervision.
               </p>
@@ -226,19 +190,21 @@ function Home() {
                 company laptops (Windows 11, BIOS, updates, and required
                 apps), tracked laptops, monitors, and peripherals as they were
                 issued or returned, and bound user accounts to devices in
-                JumpCloud — running existing scripts, with account changes
+                JumpCloud, running existing scripts, with account changes
                 made under the team lead's permission. I also logged those
                 hours in the team's Google Sheets tracker so supervisors
                 always had current visibility.
               </p>
               <p>
                 Independently, I scoped and built GanApp, a cross-platform
-                event management app. When PDF generation broke, I redesigned
-                the flow around PNG-to-PDF conversion so the deliverable still
-                shipped. I also planned the licensing path for an inventory
-                ticketing prototype, phasing from an open license toward a
-                commercial one once it was production-ready — forward planning
-                past the build itself.
+                event management app, defining the project scope, prioritizing
+                features, and working through the full build, adapting the
+                approach when technical roadblocks came up. I also designed
+                an inventory and support/ticketing prototype as an independent
+                project to replace Jira's inventory and ticketing in an
+                enterprise setting, inspired by gaps I saw during the Aretex
+                internship. Inventory management was scoped first, with
+                ticketing planned as a follow-on module.
               </p>
               <p>
                 On campus I was Vice President of the Peer Facilitator Group
@@ -297,28 +263,12 @@ function Home() {
         <div className="mx-auto w-full max-w-xl rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-center sm:p-8 2xl:max-w-2xl">
           <p className="mb-3 font-mono text-[clamp(1.125rem,2vw,1.75rem)] tracking-wider text-lime-400 uppercase">Contact</p>
           <h2 className="font-display mb-3 text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-tight text-balance">Let's work together</h2>
-          <p className="mb-6 text-sm text-zinc-500 sm:mb-8 sm:text-base">Open to remote frontend/mobile developer and project coordination roles.</p>
-          <div className="flex flex-col gap-3 text-left">
-            {contacts.map((contact) => (
-              <a
-                key={contact.label}
-                href={contact.href}
-                target={contact.external ? '_blank' : undefined}
-                rel={contact.external ? 'noopener noreferrer' : undefined}
-                className="group flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-3 no-underline transition duration-200 hover:-translate-y-0.5 hover:border-lime-400 hover:bg-lime-400/10 focus-visible:border-lime-400 focus-visible:outline-none sm:gap-4 sm:px-4 sm:py-3.5"
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 text-zinc-400 transition duration-200 group-hover:border-lime-400/40 group-hover:text-lime-400 sm:h-10 sm:w-10">
-                  {contact.icon}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-mono text-[10px] tracking-wider text-zinc-500 uppercase sm:text-xs">{contact.label}</span>
-                  <span className="block truncate text-sm text-zinc-200 transition duration-200 group-hover:text-lime-400">{contact.value}</span>
-                </span>
-                <span className="hidden text-zinc-600 transition duration-200 group-hover:translate-x-1 group-hover:text-lime-400 sm:inline-block" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            ))}
+          <p className="mb-6 text-sm text-zinc-500 sm:mb-8 sm:text-base">Open to remote frontend/mobile developer and project coordination roles. Send a message and it goes to my inbox.</p>
+          <ContactForm />
+          <div className="mt-8 flex flex-col items-center gap-3 border-t border-zinc-800 pt-6 font-mono text-base text-zinc-300 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
+            <a href="mailto:campanaalec@gmail.com" className="underline decoration-zinc-600 underline-offset-4 transition hover:text-lime-400 hover:decoration-lime-400">campanaalec@gmail.com</a>
+            <a href="https://linkedin.com/in/alec-campana-501b80321" target="_blank" rel="noopener noreferrer" className="underline decoration-zinc-600 underline-offset-4 transition hover:text-lime-400 hover:decoration-lime-400">LinkedIn</a>
+            <a href="https://github.com/Barneycle" target="_blank" rel="noopener noreferrer" className="underline decoration-zinc-600 underline-offset-4 transition hover:text-lime-400 hover:decoration-lime-400">GitHub</a>
           </div>
         </div>
       </section>
