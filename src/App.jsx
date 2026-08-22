@@ -8,7 +8,7 @@ import PmTools from './pages/PmTools'
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex min-h-dvh flex-col overflow-x-hidden bg-zinc-950 text-zinc-100">
+      <div className="flex min-h-dvh flex-col overflow-x-clip bg-zinc-950 text-zinc-100">
         <Navbar />
         <main className="flex-1">
           <Routes>
