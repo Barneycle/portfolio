@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 const roles = ['Frontend Developer', 'Mobile Developer', 'Aspiring Project Manager']
-const techStack = ['React', 'React Native', 'Vite', 'Tailwind CSS', 'Node.js', 'Supabase', 'PostgreSQL', 'MongoDB', 'Git', 'Jira']
+const techStack = ['React', 'React Native', 'Vite', 'Tailwind CSS', 'Node.js', 'Supabase', 'PostgreSQL', 'MongoDB', 'Git', 'Jira', 'JumpCloud', 'Google Workspace']
 
 const skillGroups = [
   {
@@ -30,27 +30,28 @@ const skillGroups = [
     skills: [
       { name: 'Git', level: 4 },
       { name: 'GitHub', level: 4 },
-      { name: 'Jira', level: 3 },
+      { name: 'Jira / Jira Assets', level: 3 },
       { name: 'JumpCloud', level: 3 },
+      { name: 'Google Workspace', level: 4 },
     ],
   },
   {
     category: 'PM / Coordination',
     skills: [
-      { name: 'Task Tracking', level: 3 },
+      { name: 'Scope & Prioritization', level: 3 },
+      { name: 'Timeline Tracking', level: 3 },
+      { name: 'Ticket Triage', level: 3 },
       { name: 'Device & Asset Management', level: 4 },
-      { name: 'Employee Onboarding', level: 3 },
-      { name: 'Scope Planning', level: 3 },
-      { name: 'Kanban Workflows', level: 3 },
+      { name: 'Stakeholder Communication', level: 3 },
     ],
   },
 ]
 
 const stats = [
-  { value: '486h', label: 'Internship at Aretex' },
-  { value: 'BSIT', label: 'Partido State University' },
-  { value: '2 tracks', label: 'Frontend / mobile + PM' },
-  { value: 'Remote', label: 'Open to either role' },
+  { value: '486h', label: 'IT Support intern, Aretex' },
+  { value: "Dean's Lister", label: 'BSIT, Partido State University' },
+  { value: 'VP', label: 'Peer Facilitator Group, 2022–23' },
+  { value: 'Remote', label: 'Open to either track' },
 ]
 
 const contacts = [
@@ -169,9 +170,10 @@ function Home() {
         </p>
 
         <p className="mb-8 max-w-xl text-center text-[clamp(0.9rem,2vw,1.25rem)] text-zinc-400 sm:mb-10">
-          I build clean, functional web and mobile apps, and I bring the same
-          structured, organized approach to planning and running projects.
-          Currently open to remote roles in either track.
+          I coordinate IT work and ship software on my own — scoping features,
+          tracking timelines, and changing the plan when the first approach
+          hits a wall. Currently open to remote roles in development or
+          project coordination.
         </p>
 
         <div className="mb-12 flex w-full max-w-md flex-col gap-3 sm:mb-16 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
@@ -208,34 +210,44 @@ function Home() {
             <h2 className="font-display mb-6 text-[clamp(1.5rem,3vw,2.75rem)] font-bold tracking-tight text-balance sm:mb-8">Built to ship, and to keep the work organized.</h2>
             <div className="flex flex-col gap-5 text-[clamp(0.9rem,1.5vw,1.125rem)] text-zinc-400">
               <p>
-                I'm a recent BSIT graduate from Partido State University in Goa,
-                Camarines Sur, with a growing focus on frontend and mobile
-                development. Alongside that, I'm building toward project
-                management, drawn to the structure, planning, and coordination
-                side of shipping software just as much as the code itself.
+                I'm a BSIT graduate and Dean's Lister from Partido State
+                University in Goa, Camarines Sur. I build frontend and mobile
+                apps, and I care as much about scoping, tracking, and
+                coordinating the work as I do about the code — the same
+                discipline I used to plan and deliver projects on my own,
+                without a team or close supervision.
               </p>
               <p>
-                During my internship at Aretex in Makati, I logged 486 hours
-                working across JumpCloud device management, migrating the
-                company's asset tracking from spreadsheets into Jira with some
-                light automation, and Windows 11 rollouts across a mixed fleet
-                of HP, Dell, and Huawei laptops. I also handled onboarding for
-                new employees, preparing their company laptops and peripherals,
-                setting up their accounts, and walking them through their first
-                day.
+                During 486 hours as an IT Support Intern at Aretex in Makati,
+                I triaged support tickets and coordinated assignment with the
+                team lead, monitored company email in Microsoft Defender for
+                phishing, and migrated IT asset records from spreadsheets into
+                Jira Assets with light automation. I set up and reformatted
+                company laptops (Windows 11, BIOS, updates, and required
+                apps), tracked laptops, monitors, and peripherals as they were
+                issued or returned, and bound user accounts to devices in
+                JumpCloud — running existing scripts, with account changes
+                made under the team lead's permission. I also logged those
+                hours in the team's Google Sheets tracker so supervisors
+                always had current visibility.
               </p>
               <p>
-                On the development side, I've worked on projects ranging from a
-                cross-platform event management system to a prototype inventory
-                ticketing tool I started during my internship, using React, React
-                Native, and Supabase. I care about writing clean, functional code,
-                and I bring that same structured approach to planning and
-                tracking a project from scope to delivery.
+                Independently, I scoped and built GanApp, a cross-platform
+                event management app. When PDF generation broke, I redesigned
+                the flow around PNG-to-PDF conversion so the deliverable still
+                shipped. I also planned the licensing path for an inventory
+                ticketing prototype, phasing from an open license toward a
+                commercial one once it was production-ready — forward planning
+                past the build itself.
               </p>
               <p>
-                I'm currently open to remote roles in either frontend/mobile
-                development or project management, and this site itself doubles
-                as a working example of both.
+                On campus I was Vice President of the Peer Facilitator Group
+                (2022–2023), coordinating schedules and communication among
+                student volunteers, and a representative for Nextgen
+                Information Technology Enthusiasts (2022–2024). I'm currently
+                open to remote roles in frontend/mobile development or project
+                coordination, and this site itself is a working example of
+                both.
               </p>
               <p className="text-zinc-500 italic">
                 Outside of work, I'm usually cooking something or playing video
@@ -285,7 +297,7 @@ function Home() {
         <div className="mx-auto w-full max-w-xl rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-center sm:p-8 2xl:max-w-2xl">
           <p className="mb-3 font-mono text-[clamp(1.125rem,2vw,1.75rem)] tracking-wider text-lime-400 uppercase">Contact</p>
           <h2 className="font-display mb-3 text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-tight text-balance">Let's work together</h2>
-          <p className="mb-6 text-sm text-zinc-500 sm:mb-8 sm:text-base">Open to remote frontend/mobile developer and project management VA roles.</p>
+          <p className="mb-6 text-sm text-zinc-500 sm:mb-8 sm:text-base">Open to remote frontend/mobile developer and project coordination roles.</p>
           <div className="flex flex-col gap-3 text-left">
             {contacts.map((contact) => (
               <a
