@@ -1,8 +1,8 @@
-import { useState } from 'react'
-
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/dc38724da73d762ae9f4ecd201682e1c'
+import { useRef, useState } from 'react'
+import { CONTACT_LIMITS, CONTACT_MIN_SUBMIT_MS } from '../../lib/contact-limits.js'
 
 function ContactForm() {
+  const startedAtRef = useRef(Date.now())
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -10,10 +10,24 @@ function ContactForm() {
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
 
+  function resetForm() {
+    startedAtRef.current = Date.now()
+    setName('')
+    setEmail('')
+    setMessage('')
+    setHoneypot('')
+    setError('')
+    setStatus('idle')
+  }
+
   async function handleSubmit(event) {
     event.preventDefault()
-    if (honeypot) return
-    if (!name.trim() || !email.trim() || !message.trim()) {
+
+    const nextName = name.trim().slice(0, CONTACT_LIMITS.name)
+    const nextEmail = email.trim().slice(0, CONTACT_LIMITS.email)
+    const nextMessage = message.trim().slice(0, CONTACT_LIMITS.message)
+
+    if (!nextName || !nextEmail || !nextMessage) {
       setError('Please fill in your name, email, and message.')
       setStatus('error')
       return
@@ -22,35 +36,56 @@ function ContactForm() {
     setStatus('sending')
     setError('')
 
+    if (honeypot.trim()) {
+      setStatus('sent')
+      return
+    }
+
     try {
-      const response = await fetch(FORM_ENDPOINT, {
+      const waitMs = CONTACT_MIN_SUBMIT_MS - (Date.now() - startedAtRef.current)
+      if (waitMs > 0) {
+        await new Promise((resolve) => setTimeout(resolve, waitMs))
+      }
+
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          message: message.trim(),
-          _subject: 'New message from aleccampana.dev',
-          _template: 'table',
-          _captcha: 'false',
+          name: nextName,
+          email: nextEmail,
+          message: nextMessage,
+          website: honeypot,
+          startedAt: startedAtRef.current,
         }),
       })
 
-      const data = await response.json()
-      if (!response.ok || data.success === 'false' || data.success === false) {
-        throw new Error(data.message || 'Could not send message.')
+      const data = await response.json().catch(() => ({}))
+      if (!response.ok || data.ok !== true) {
+        throw new Error(
+          typeof data.error === 'string' && data.error
+            ? data.error
+            : 'Could not send message.',
+        )
       }
 
       setStatus('sent')
       setName('')
       setEmail('')
       setMessage('')
-    } catch {
+      setHoneypot('')
+    } catch (submitError) {
       setStatus('error')
-      setError('Something went wrong. Email me directly at campanaalec@gmail.com.')
+      const known =
+        submitError instanceof Error &&
+        (submitError.message === 'Please fill in your name, email, and message.' ||
+          submitError.message === 'Please enter a valid email address.' ||
+          submitError.message === 'Too many messages. Try again later.')
+          ? submitError.message
+          : 'Something went wrong. Email me directly at campanaalec@gmail.com.'
+      setError(known)
     }
   }
 
@@ -64,7 +99,7 @@ function ContactForm() {
         <p className="text-sm text-zinc-200">Message sent. I will get back to you by email.</p>
         <button
           type="button"
-          onClick={() => setStatus('idle')}
+          onClick={resetForm}
           className="mt-4 text-sm text-lime-400 hover:text-lime-300"
         >
           Send another
@@ -74,10 +109,17 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left" autoComplete="on">
       <label className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
         Website
-        <input type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
       </label>
 
       <div>
@@ -87,8 +129,9 @@ function ContactForm() {
           type="text"
           name="name"
           autoComplete="name"
+          maxLength={CONTACT_LIMITS.name}
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value.slice(0, CONTACT_LIMITS.name))}
           className={fieldClass}
           required
         />
@@ -101,8 +144,9 @@ function ContactForm() {
           type="email"
           name="email"
           autoComplete="email"
+          maxLength={CONTACT_LIMITS.email}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value.slice(0, CONTACT_LIMITS.email))}
           className={fieldClass}
           required
         />
@@ -114,8 +158,9 @@ function ContactForm() {
           id="contact-message"
           name="message"
           rows={5}
+          maxLength={CONTACT_LIMITS.message}
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => setMessage(e.target.value.slice(0, CONTACT_LIMITS.message))}
           className={`${fieldClass} min-h-32 resize-y py-3`}
           required
         />
