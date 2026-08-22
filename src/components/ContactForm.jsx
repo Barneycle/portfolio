@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import { CONTACT_LIMITS, CONTACT_MIN_SUBMIT_MS } from '../../lib/contact-limits.js'
 
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/dc38724da73d762ae9f4ecd201682e1c'
+
 function ContactForm() {
   const startedAtRef = useRef(Date.now())
   const [name, setName] = useState('')
@@ -47,7 +49,7 @@ function ContactForm() {
         await new Promise((resolve) => setTimeout(resolve, waitMs))
       }
 
-      const response = await fetch('/api/contact', {
+      const response = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,18 +59,17 @@ function ContactForm() {
           name: nextName,
           email: nextEmail,
           message: nextMessage,
-          website: honeypot,
-          startedAt: startedAtRef.current,
+          _honey: honeypot,
+          _subject: 'New message from aleccampana.dev',
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: nextEmail,
         }),
       })
 
       const data = await response.json().catch(() => ({}))
-      if (!response.ok || data.ok !== true) {
-        throw new Error(
-          typeof data.error === 'string' && data.error
-            ? data.error
-            : 'Could not send message.',
-        )
+      if (!response.ok || data.success === 'false' || data.success === false) {
+        throw new Error('Could not send message.')
       }
 
       setStatus('sent')
@@ -76,16 +77,9 @@ function ContactForm() {
       setEmail('')
       setMessage('')
       setHoneypot('')
-    } catch (submitError) {
+    } catch {
       setStatus('error')
-      const known =
-        submitError instanceof Error &&
-        (submitError.message === 'Please fill in your name, email, and message.' ||
-          submitError.message === 'Please enter a valid email address.' ||
-          submitError.message === 'Too many messages. Try again later.')
-          ? submitError.message
-          : 'Something went wrong. Email me directly at campanaalec@gmail.com.'
-      setError(known)
+      setError('Something went wrong. Email me directly at campanaalec@gmail.com.')
     }
   }
 
