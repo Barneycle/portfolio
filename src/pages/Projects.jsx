@@ -33,10 +33,11 @@ const projects = [
   },
   {
     title: 'GameThrough',
-    status: 'In Progress',
-    description: 'A game walkthrough site in the style of IGN or GameFAQs, built to practice component structure and page layout. Content is sourced from IGN for demo purposes only and is not intended for public or commercial use.',
+    status: 'Completed',
+    description: 'A live game-tracking site for following a title chapter by chapter, starting with God of War (2018). Built to practice component structure, routing, and page layout, then shipped as a working product.',
     tech: ['React', 'Vite'],
     github: 'https://github.com/Barneycle/GameThrough',
+    live: 'https://game-through-7m5q.vercel.app/',
   },
 ]
 
