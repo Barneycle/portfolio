@@ -56,14 +56,6 @@ function Navbar() {
               {link.label}
             </Link>
           ))}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md bg-lime-400 px-4 py-2 font-medium text-zinc-950 transition hover:bg-lime-300"
-          >
-            Resume
-          </a>
         </div>
 
         <button
@@ -92,14 +84,6 @@ function Navbar() {
               {link.label}
             </Link>
           ))}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 min-h-11 rounded-md bg-lime-400 px-4 py-3 text-center text-sm font-medium text-zinc-950"
-          >
-            Resume
-          </a>
         </div>
       )}
     </nav>
