@@ -38,7 +38,8 @@ function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/80 pt-[env(safe-area-inset-top)] backdrop-blur-md">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4 lg:px-8 2xl:max-w-6xl 4xl:max-w-7xl">
-        <Link to="/" className="font-display shrink-0 text-base font-semibold tracking-tight sm:text-lg 4xl:text-xl">
+        <Link to="/" className="font-display flex shrink-0 items-center gap-2 text-base font-semibold tracking-tight sm:gap-2.5 sm:text-lg 4xl:text-xl">
+          <img src="/ACFav.svg" alt="" width="32" height="32" className="h-7 w-7 sm:h-8 sm:w-8" />
           Alec<span className="text-lime-400">.</span>Dev
         </Link>
 
