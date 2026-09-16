@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ContactForm from '../components/ContactForm'
 
-const roles = ['Frontend Developer', 'Mobile Developer', 'Aspiring Project Manager']
+const roles = ['Frontend Developer', 'Mobile Developer']
 const techStack = ['React', 'React Native', 'Vite', 'Tailwind CSS', 'Node.js', 'Supabase', 'PostgreSQL', 'MongoDB', 'Git', 'Jira', 'JumpCloud', 'Google Workspace']
 
 const skillGroups = [
@@ -118,14 +118,6 @@ function Home() {
   return (
     <>
       <section id="home" className="animate-fade-up mx-auto flex w-full max-w-3xl flex-col items-center px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 2xl:max-w-4xl 2xl:py-32 4xl:max-w-5xl">
-        <div className="mb-6 flex max-w-full items-center gap-2 rounded-full border border-lime-400/20 bg-lime-400/10 px-2.5 py-1 sm:mb-8 sm:px-3 sm:py-1.5">
-          <span className="relative flex h-2 w-2 shrink-0">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-lime-400" />
-          </span>
-          <span className="font-mono text-[10px] text-lime-400 sm:text-xs">OPEN TO REMOTE WORK</span>
-        </div>
-
         <h1 className="font-display mb-3 text-center text-[clamp(2rem,8vw,6rem)] leading-tight font-bold tracking-tight text-balance">
           Alec Campana
         </h1>
